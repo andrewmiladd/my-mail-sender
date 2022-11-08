@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./Forms.css";
 
 function Form() {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  type stringState = [string, React.Dispatch<React.SetStateAction<string>>];
+
+  const [email, setEmail]: stringState = useState("");
+  const [message, setMessage]: stringState = useState("");
 
   let emailInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -21,6 +23,7 @@ function Form() {
             <label style={{ fontSize: "30px" }}> To </label>
             <input
               type="email"
+              multiple
               placeholder="Enter a valid email"
               required
               value={email}
