@@ -81,10 +81,25 @@ form textarea:focus::placeholder{
     color: #00fff0;
     transition: all 0.3s ease;
 }
+label{
+  font-size: 30px;
+}
 @media screen and (max-width:750px) {
   .container{
   width:50%;
-  height: 50%;
-  margin-left: 182px;
+  margin-left: 110px;
+}
+form input , form textarea{
+  font-size: smaller;
+}
+
+h1{
+  font-size: large;
+}
+label{
+  font-size: 20px;
+}
+form button{
+  font-size: 15px;
 }
 }

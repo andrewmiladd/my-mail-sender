@@ -20,7 +20,7 @@ function Form() {
         <form>
           <h1>Your Mail Sender</h1>
           <div className="item">
-            <label style={{ fontSize: "30px" }}> To </label>
+            <label> To </label>
             <input
               type="email"
               multiple
@@ -30,7 +30,7 @@ function Form() {
               onChange={emailInputHandler}
             />
           </div>
-          <label style={{ fontSize: "30px" }}>Your Message</label>
+          <label>Your Message</label>
           <textarea
             cols={35}
             rows={10}
