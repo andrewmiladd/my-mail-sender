@@ -26,7 +26,6 @@ body {
   opacity: 0.8;
 }
 .container form {
-  width: 100%;
   text-align: center;
   padding: 25px 20px;
 }
@@ -81,4 +80,11 @@ form textarea:focus::placeholder{
     padding-left: 4px;
     color: #00fff0;
     transition: all 0.3s ease;
+}
+@media screen and (max-width:750px) {
+  .container{
+  width:50%;
+  height: 50%;
+  margin-left: 182px;
+}
 }
