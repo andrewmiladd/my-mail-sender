@@ -15,35 +15,31 @@ function Form() {
     };
 
     return (
-        <div>
-            <div className="container">
-                <form>
-                    <h1>Your Mail Sender</h1>
-                    <div className="item">
-                        <label> To </label>
-                        <input
-                            type="email"
-                            multiple
-                            placeholder="Enter a valid email"
-                            required
-                            value={email}
-                            onChange={emailInputHandler}
-                        />
-                    </div>
-                    <label>Your Message</label>
-                    <textarea
-                        cols={35}
-                        rows={10}
-                        placeholder="Enter Your Message"
-                        required
-                        value={message}
-                        onChange={messageInputhandler}
-                    ></textarea>
-
-                    <button type="submit">Send Your Message</button>
-                </form>
+        <form>
+            <h1>Your Mail Sender</h1>
+            <div className="item">
+                <label> To </label>
+                <input
+                    type="email"
+                    multiple
+                    placeholder="Enter a valid email"
+                    required
+                    value={email}
+                    onChange={emailInputHandler}
+                />
             </div>
-        </div>
+            <label>Your Message</label>
+            <textarea
+                cols={35}
+                rows={10}
+                placeholder="Enter Your Message"
+                required
+                value={message}
+                onChange={messageInputhandler}
+            ></textarea>
+
+            <button type="submit">Send Your Message</button>
+        </form>
     );
 }
 export default Form;
