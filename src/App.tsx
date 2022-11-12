@@ -2,7 +2,7 @@ import React from "react";
 import { FormSendMail } from "./Components/Forms/FormSendMail";
 import { Container } from "./Components/Core/Container";
 
-function App() {
+const App = () => {
     return (
         <div>
             <Container>

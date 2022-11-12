@@ -1,44 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Forms.modules.css";
+import { InputEmails } from "./InputEmails";
+import { InputMessage } from "./InputMessage";
 
-export function FormSendMail() {
-    type stringState = [string, React.Dispatch<React.SetStateAction<string>>];
-
-    const [email, setEmail]: stringState = useState("");
-    const [message, setMessage]: stringState = useState("");
-
-    let emailInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
-    let messageInputhandler = (e: any) => {
-        setMessage(e.target.value);
-    };
-
+export const FormSendMail = () => {
     return (
         <form>
             <h1>Your Mail Sender</h1>
             <div className={styles.items}>
                 <label> To </label>
-                <input
-                    type="email"
-                    multiple
-                    placeholder="Enter a valid email"
-                    required
-                    value={email}
-                    onChange={emailInputHandler}
-                />
-            </div>
-            <label>Your Message</label>
-            <textarea
-                cols={35}
-                rows={10}
-                placeholder="Enter Your Message"
-                required
-                value={message}
-                onChange={messageInputhandler}
-            ></textarea>
+                <InputEmails />
 
+                <label>Your Message</label>
+                <InputMessage />
+            </div>
             <button type="submit">Send Your Message</button>
         </form>
     );
-}
+};
