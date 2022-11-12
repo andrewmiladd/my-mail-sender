@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Forms.css";
+import styles from "./Forms.modules.css";
 
 export function FormSendMail() {
     type stringState = [string, React.Dispatch<React.SetStateAction<string>>];
@@ -17,7 +17,7 @@ export function FormSendMail() {
     return (
         <form>
             <h1>Your Mail Sender</h1>
-            <div className="item">
+            <div className={styles.items}>
                 <label> To </label>
                 <input
                     type="email"
