@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Forms.css";
 
-function Form() {
+export function FormSendMail() {
     type stringState = [string, React.Dispatch<React.SetStateAction<string>>];
 
     const [email, setEmail]: stringState = useState("");
@@ -42,4 +42,3 @@ function Form() {
         </form>
     );
 }
-export default Form;

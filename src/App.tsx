@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "./Components/Forms";
+import { FormSendMail } from "./Components/Forms/FormSendMail";
 import "./App.css";
 import { Container } from "./Components/Core/Container";
 
@@ -7,7 +7,7 @@ function App() {
     return (
         <div>
             <Container>
-                <Form />
+                <FormSendMail />
             </Container>
         </div>
     );
