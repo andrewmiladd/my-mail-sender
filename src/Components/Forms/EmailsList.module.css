@@ -1,0 +1,32 @@
+.list {
+    width: 400px;
+    box-shadow: 0 1.5rem 1rem -1rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.3rem;
+}
+p {
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 30px;
+    height: 30px;
+    padding: 0 4px 0 1rem;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0.3rem 0.3rem 0;
+    background-color: rgb(208, 196, 196);
+}
+.specialButton {
+    background-color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,27 @@
+import styles from "./EmailsList.module.css";
+
+interface Props {
+    mails: string[];
+    setEmails: React.Dispatch<React.SetStateAction<string[]>>;
+}
+export const EmailsList = ({ mails, setEmails }: Props) => {
+    let onDeleteHandler = (toBeRemoved: string) => {
+        setEmails(mails.filter(e => e !== toBeRemoved));
+    };
+    return (
+        <div className={styles.list}>
+            {mails.map(email => (
+                <p key={email}>
+                    {email}{" "}
+                    <button
+                        type="button"
+                        onClick={() => onDeleteHandler(email)}
+                        className={styles.specialButton}
+                    >
+                          &times;
+                    </button>
+                </p>
+            ))}
+        </div>
+    );
+};

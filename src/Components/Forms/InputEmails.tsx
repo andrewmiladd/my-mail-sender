@@ -1,10 +1,12 @@
-import React, { useState, ChangeEvent, KeyboardEvent} from "react";
+import React, { useState, ChangeEvent, KeyboardEvent } from "react";
+import { EmailsList } from "./EmailsList";
 
 export const InputEmails = () => {
     type stringState = [string, React.Dispatch<React.SetStateAction<string>>];
+    type arrayStringState = [string[], React.Dispatch<React.SetStateAction<string[]>>];
 
     const [newEmail, setNewEmail]: stringState = useState("");
-    const [allEmails, setAllEmails] = useState([newEmail]);
+    const [allEmails, setAllEmails]: arrayStringState = useState([newEmail]);
 
     let onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewEmail(e.target.value);
@@ -23,20 +25,12 @@ export const InputEmails = () => {
         }
     };
 
-    let onDeleteHandler = (toBeRemoved: string) => {
-        setAllEmails(allEmails.filter(e => e !== toBeRemoved));
-    };
-    console.log(allEmails);
     return (
         <>
-            {allEmails.map(email => (
-                <p key={email} onClick={() => onDeleteHandler(email)}>
-                    {email}
-                </p>
-            ))}
+            <EmailsList mails={allEmails} setEmails={setAllEmails} />
             <input
                 placeholder="Enter A valid email"
-                value={newEmail.trim()}
+                value={newEmail.toLocaleLowerCase().trim()}
                 onChange={onChangeHandler}
                 onKeyDown={multipleMailsEventHandler}
             />
