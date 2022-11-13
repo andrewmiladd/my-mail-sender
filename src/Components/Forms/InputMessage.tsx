@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 
 export const InputMessage = () => {
     type stringState = [string, React.Dispatch<React.SetStateAction<string>>];
 
     const [message, setMessage]: stringState = useState("");
 
-    let messageInputhandler = (e: any) => {
+    let messageInputhandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setMessage(e.target.value);
     };
 
@@ -14,7 +14,6 @@ export const InputMessage = () => {
             cols={35}
             rows={10}
             placeholder="Enter Your Message"
-            required
             value={message}
             onChange={messageInputhandler}
         />
