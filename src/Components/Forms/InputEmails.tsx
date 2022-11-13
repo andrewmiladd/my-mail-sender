@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from "react";
+import React, { useState, ChangeEvent, KeyboardEvent} from "react";
 
 export const InputEmails = () => {
     type stringState = [string, React.Dispatch<React.SetStateAction<string>>];
@@ -23,11 +23,16 @@ export const InputEmails = () => {
         }
     };
 
+    let onDeleteHandler = (toBeRemoved: string) => {
+        setAllEmails(allEmails.filter(e => e !== toBeRemoved));
+    };
     console.log(allEmails);
     return (
         <>
             {allEmails.map(email => (
-                <p>{email}</p>
+                <p key={email} onClick={() => onDeleteHandler(email)}>
+                    {email}
+                </p>
             ))}
             <input
                 placeholder="Enter A valid email"
