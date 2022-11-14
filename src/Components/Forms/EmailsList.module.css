@@ -2,7 +2,7 @@
     box-shadow: 0 1.5rem 1rem -1rem rgba(0, 0, 0, 0.1);
     border-radius: 0.3rem;
 }
-p {
+.list p {
     display: inline-block;
     font-size: 14px;
     padding: 1rem;
@@ -12,12 +12,12 @@ p {
     display: inline-flex;
     align-items: center;
     margin: 0 0.3rem 0.3rem 0;
-    background-color: rgb(208, 196, 196);
+    background-color: rgb(170, 143, 143);
 }
-.specialButton {
+.my__button {
     background-color: white;
     width: 22px;
-    height: 19px;
+    height: 50%;
     border-radius: 50%;
     border: none;
     cursor: pointer;

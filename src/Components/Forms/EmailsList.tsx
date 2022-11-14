@@ -12,11 +12,11 @@ export const EmailsList = ({ mails, setEmails }: Props) => {
         <div className={styles.list}>
             {mails.map(email => (
                 <p key={email}>
-                    {email}{" "}
+                    {email}
                     <button
                         type="button"
                         onClick={() => onDeleteHandler(email)}
-                        className={styles.specialButton}
+                        className={styles.my__button}
                     >
                         &times;
                     </button>

@@ -5,19 +5,34 @@ export const InputEmails = () => {
     type stringState = [string, React.Dispatch<React.SetStateAction<string>>];
     type arrayStringState = [string[], React.Dispatch<React.SetStateAction<string[]>>];
 
-    const [newEmail, setNewEmail]: stringState = useState("");
+    const [newEnteredEmail, setNewEnteredEmail]: stringState = useState("");
     const [allEmails, setAllEmails]: arrayStringState = useState([] as string[]);
+    const [isValidState, setIsValidState] = useState(true);
+    const [notRepeatedState, setNotRepeatedState] = useState(true);
 
-    let onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setNewEmail(e.target.value);
+    let onNewEmailChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setNewEnteredEmail(e.target.value);
+        setIsValidState(true);
+        setNotRepeatedState(true);
     };
+    let isValid =
+        newEnteredEmail.includes("@") &&
+        newEnteredEmail.includes(".") &&
+        !newEnteredEmail.includes("@", newEnteredEmail.length - 1) &&
+        !newEnteredEmail.includes(".", newEnteredEmail.length - 1);
+
+    let notRepated = !allEmails.includes(newEnteredEmail);
 
     let multipleMailsEventHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (["Enter", ","].includes(e.key)) {
+        if (["Enter", ",", "Tab"].includes(e.key)) {
             e.preventDefault();
-            if (newEmail.includes("@") && newEmail.includes(".")) {
-                setAllEmails([...allEmails, newEmail]);
-                setNewEmail("");
+            if (isValid && notRepated) {
+                setAllEmails([...allEmails, newEnteredEmail]);
+                setNewEnteredEmail("");
+            } else if (!notRepated) {
+                setNotRepeatedState(false);
+            } else {
+                setIsValidState(false);
             }
         }
     };
@@ -25,11 +40,17 @@ export const InputEmails = () => {
         <>
             <EmailsList mails={allEmails} setEmails={setAllEmails} />
             <input
-                placeholder="Enter A valid email"
-                value={newEmail.toLocaleLowerCase().trim()}
-                onChange={onChangeHandler}
+                placeholder="Enter a valid email"
+                value={newEnteredEmail.toLocaleLowerCase().trim()}
+                onChange={onNewEmailChangeHandler}
                 onKeyDown={multipleMailsEventHandler}
             />
+            {!isValidState && (
+                <p style={{ color: "red", margin: "0" }}>*please enter a valid email</p>
+            )}
+            {!notRepeatedState && (
+                <p style={{ color: "red", margin: "0" }}>*this email is already taken</p>
+            )}
         </>
     );
 };
