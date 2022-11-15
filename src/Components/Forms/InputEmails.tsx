@@ -13,27 +13,26 @@ export const InputEmails = (props: any) => {
         setIsValidState(true);
         setNotRepeatedState(true);
     };
-    let isValid =
-        newEnteredEmail.includes("@") &&
-        newEnteredEmail.includes(".") &&
-        !newEnteredEmail.includes("@", newEnteredEmail.length - 1) &&
-        !newEnteredEmail.includes(".", newEnteredEmail.length - 1);
-
+    
+    let isValid = /\S+@\S+\.\S+/.test(newEnteredEmail) && !newEnteredEmail.includes("." && "#", 0);
     let notRepated = !allEmails.includes(newEnteredEmail);
 
+    let formValidation = () => {
+        if (isValid && notRepated) {
+            setAllEmails([...allEmails, newEnteredEmail]);
+            setNewEnteredEmail("");
+            setIsValidState(true);
+            setNotRepeatedState(true);
+        } else if (!notRepated) {
+            setNotRepeatedState(false);
+        } else {
+            setIsValidState(false);
+        }
+    };
     let multipleMailsEventHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (["Enter", ",", "Tab"].includes(e.key)) {
             e.preventDefault();
-            if (isValid && notRepated) {
-                setAllEmails([...allEmails, newEnteredEmail]);
-                setNewEnteredEmail("");
-                setIsValidState(true);
-                setNotRepeatedState(true);
-            } else if (!notRepated) {
-                setNotRepeatedState(false);
-            } else {
-                setIsValidState(false);
-            }
+            formValidation();
         }
     };
     return (

@@ -13,7 +13,6 @@ export const FormSendMail = () => {
             <div className={styles.items}>
                 <label> To </label>
                 <InputEmails />
-
                 <label>Your Message</label>
                 <InputMessage />
             </div>

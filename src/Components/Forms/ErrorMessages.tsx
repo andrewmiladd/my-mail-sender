@@ -1,8 +1,9 @@
+import { FC } from "react";
 interface ErrorProps {
     isValidate: boolean;
     notRepated: boolean;
 }
-export const ErrorMessages = ({ isValidate, notRepated }: ErrorProps) => {
+export const ErrorMessages: FC<ErrorProps> = ({ isValidate, notRepated }) => {
     return (
         <>
             {!isValidate && (
