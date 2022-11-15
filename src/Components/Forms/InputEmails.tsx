@@ -1,14 +1,12 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import { EmailsList } from "./EmailsList";
+import { ErrorMessages } from "./ErrorMessages";
 
-export const InputEmails = () => {
-    type stringState = [string, React.Dispatch<React.SetStateAction<string>>];
-    type arrayStringState = [string[], React.Dispatch<React.SetStateAction<string[]>>];
-
-    const [newEnteredEmail, setNewEnteredEmail]: stringState = useState("");
-    const [allEmails, setAllEmails]: arrayStringState = useState([] as string[]);
+export const InputEmails = (props: any) => {
+    const [newEnteredEmail, setNewEnteredEmail] = useState("");
+    const [allEmails, setAllEmails] = useState([] as string[]);
     const [isValidState, setIsValidState] = useState(true);
-    const [notRepeatedState, setNotRepeatedState] = useState(true);
+    const [notRepatedState, setNotRepeatedState] = useState(true);
 
     let onNewEmailChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewEnteredEmail(e.target.value);
@@ -29,6 +27,8 @@ export const InputEmails = () => {
             if (isValid && notRepated) {
                 setAllEmails([...allEmails, newEnteredEmail]);
                 setNewEnteredEmail("");
+                setIsValidState(true);
+                setNotRepeatedState(true);
             } else if (!notRepated) {
                 setNotRepeatedState(false);
             } else {
@@ -45,12 +45,7 @@ export const InputEmails = () => {
                 onChange={onNewEmailChangeHandler}
                 onKeyDown={multipleMailsEventHandler}
             />
-            {!isValidState && (
-                <p style={{ color: "red", margin: "0" }}>*please enter a valid email</p>
-            )}
-            {!notRepeatedState && (
-                <p style={{ color: "red", margin: "0" }}>*this email is already taken</p>
-            )}
+            <ErrorMessages isValidate={isValidState} notRepated={notRepatedState} />
         </>
     );
 };
