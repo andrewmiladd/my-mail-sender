@@ -1,20 +1,29 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import styles from "./Forms.modules.css";
 import { InputEmails } from "./InputEmails";
 import { InputMessage } from "./InputMessage";
 
-let formSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-};
 export const FormSendMail = () => {
+    const [allEmails, setAllEmails] = useState([] as string[]);
+    const [newMessage, setNewMessage] = useState("");
+
+    let formSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (allEmails.length > 0 && newMessage.length > 0) {
+            console.log([...allEmails, { message: newMessage }]);
+        } else {
+            console.log("Error, Form Refused!");
+            return false;
+        }
+    };
     return (
         <form onSubmit={formSubmitHandler}>
             <h1>Your Mail Sender</h1>
             <div className={styles.items}>
                 <label> To </label>
-                <InputEmails />
+                <InputEmails loggerDataOnSuccess={setAllEmails} />
                 <label>Your Message</label>
-                <InputMessage />
+                <InputMessage setNewMessageFromParent={setNewMessage} />
             </div>
             <button type="submit">Send Your Message</button>
         </form>

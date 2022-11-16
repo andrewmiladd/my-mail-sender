@@ -10,7 +10,7 @@ export const ErrorMessages: FC<ErrorProps> = ({ isValidate, notRepated }) => {
                 <p style={{ color: "red", margin: "0" }}>*Please enter a valid email</p>
             )}
             {!notRepated && (
-                <p style={{ color: "red", margin: "0" }}>*This email is already exists</p>
+                <p style={{ color: "red", margin: "0" }}>*This email already exists</p>
             )}
         </>
     );

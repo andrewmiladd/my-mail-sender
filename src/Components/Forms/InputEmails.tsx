@@ -2,7 +2,10 @@ import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import { EmailsList } from "./EmailsList";
 import { ErrorMessages } from "./ErrorMessages";
 
-export const InputEmails = (props: any) => {
+interface Props {
+    loggerDataOnSuccess: React.Dispatch<React.SetStateAction<string[]>>;
+}
+export const InputEmails = ({ loggerDataOnSuccess }: Props) => {
     const [newEnteredEmail, setNewEnteredEmail] = useState("");
     const [allEmails, setAllEmails] = useState([] as string[]);
     const [isValidState, setIsValidState] = useState(true);
@@ -13,16 +16,16 @@ export const InputEmails = (props: any) => {
         setIsValidState(true);
         setNotRepeatedState(true);
     };
-    
-    let isValid = /\S+@\S+\.\S+/.test(newEnteredEmail) && !newEnteredEmail.includes("." && "#", 0);
+    let isValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(newEnteredEmail);
     let notRepated = !allEmails.includes(newEnteredEmail);
 
     let formValidation = () => {
         if (isValid && notRepated) {
-            setAllEmails([...allEmails, newEnteredEmail]);
+            setAllEmails([...allEmails, newEnteredEmail.toLocaleLowerCase()]);
             setNewEnteredEmail("");
             setIsValidState(true);
             setNotRepeatedState(true);
+            loggerDataOnSuccess([...allEmails, newEnteredEmail.toLocaleLowerCase()]);
         } else if (!notRepated) {
             setNotRepeatedState(false);
         } else {
@@ -37,7 +40,11 @@ export const InputEmails = (props: any) => {
     };
     return (
         <>
-            <EmailsList mails={allEmails} setEmails={setAllEmails} />
+            <EmailsList
+                mails={allEmails}
+                setEmails={setAllEmails}
+                listUpdaterOnTheConsole={loggerDataOnSuccess}
+            />
             <input
                 placeholder="Enter a valid email"
                 value={newEnteredEmail.toLocaleLowerCase().trim()}
