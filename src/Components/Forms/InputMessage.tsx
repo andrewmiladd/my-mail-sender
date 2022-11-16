@@ -22,7 +22,7 @@ export const InputMessage = ({ setNewMessageFromParent }: MessageProp) => {
                 cols={35}
                 rows={10}
                 placeholder="Enter Your Message"
-                value={message.trim()}
+                value={message.trimStart()}
                 onKeyDown={messageEventHandler}
                 onChange={messageInputhandler}
                 style={{ border: "1px solid" }}
