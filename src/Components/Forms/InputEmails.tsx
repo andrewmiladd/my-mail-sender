@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import { EmailsList } from "./EmailsList";
 import { ErrorMessages } from "./ErrorMessages";
 
+//Adding the data to FormSendEmail Component
 interface Props {
     loggerDataOnSuccess: React.Dispatch<React.SetStateAction<string[]>>;
 }
@@ -16,8 +17,8 @@ export const InputEmails = ({ loggerDataOnSuccess }: Props) => {
         setIsValidState(true);
         setNotRepeatedState(true);
     };
-    let isValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(newEnteredEmail);
-    let notRepated = !allEmails.includes(newEnteredEmail);
+    let isValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(newEnteredEmail); //Email format validation
+    let notRepated = !allEmails.includes(newEnteredEmail); // To ensure there is not any used emails
 
     let formValidation = () => {
         if (isValid && notRepated) {

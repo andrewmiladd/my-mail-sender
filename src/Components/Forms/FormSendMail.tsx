@@ -4,6 +4,7 @@ import { InputEmails } from "./InputEmails";
 import { InputMessage } from "./InputMessage";
 
 export const FormSendMail = () => {
+    //Adding the States to recieve data from children components
     const [allEmails, setAllEmails] = useState([] as string[]);
     const [newMessage, setNewMessage] = useState("");
 

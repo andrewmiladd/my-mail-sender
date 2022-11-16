@@ -6,16 +6,19 @@ interface MessageProp {
 export const InputMessage = ({ setNewMessageFromParent }: MessageProp) => {
     const [message, setMessage] = useState("");
     const [isValidMessage, setIsValidMessage] = useState(true);
+
     let messageInputhandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setMessage(e.target.value);
         setNewMessageFromParent(e.target.value);
         setIsValidMessage(true);
     };
+
     let messageEventHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
         if (["Enter", ",", "Tab"].includes(e.key)) {
             message.length < 1 && setIsValidMessage(false);
         }
     };
+
     return (
         <>
             <textarea
@@ -27,7 +30,9 @@ export const InputMessage = ({ setNewMessageFromParent }: MessageProp) => {
                 onChange={messageInputhandler}
                 style={{ border: "1px solid" }}
             />
-            {!isValidMessage && <p style={{ color: "red", margin: "0" }}>*Please Enter a Message</p>}
+            {!isValidMessage && (
+                <p style={{ color: "red", margin: "0" }}>*Please Enter a Message</p>
+            )}
         </>
     );
 };
