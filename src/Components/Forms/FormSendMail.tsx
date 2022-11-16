@@ -10,7 +10,7 @@ export const FormSendMail = () => {
 
     let formSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (allEmails.length > 0 && newMessage.length > 0) {
+        if (allEmails.length > 0 && newMessage.trim().length > 0) {
             console.log([...allEmails, { message: newMessage }]);
         } else {
             console.log("Error, Form Refused!");

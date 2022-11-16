@@ -1,12 +1,12 @@
 import { FC } from "react";
 interface ErrorProps {
-    isValidate: boolean;
+    isEmail: boolean;
     notRepated: boolean;
 }
-export const ErrorMessages: FC<ErrorProps> = ({ isValidate, notRepated }) => {
+export const ErrorMessages: FC<ErrorProps> = ({ isEmail, notRepated }) => {
     return (
         <>
-            {!isValidate && (
+            {!isEmail && (
                 <p style={{ color: "red", margin: "0" }}>*Please enter a valid email</p>
             )}
             {!notRepated && (

@@ -2,35 +2,35 @@ import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import { EmailsList } from "./EmailsList";
 import { ErrorMessages } from "./ErrorMessages";
 
-//Adding the data to FormSendEmail Component
+//Adding the data to FormSendMail Component
 interface Props {
     loggerDataOnSuccess: React.Dispatch<React.SetStateAction<string[]>>;
 }
 export const InputEmails = ({ loggerDataOnSuccess }: Props) => {
     const [newEnteredEmail, setNewEnteredEmail] = useState("");
     const [allEmails, setAllEmails] = useState([] as string[]);
-    const [isValidState, setIsValidState] = useState(true);
+    const [isEmailState, setIsEmailState] = useState(true);
     const [notRepatedState, setNotRepeatedState] = useState(true);
 
     let onNewEmailChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewEnteredEmail(e.target.value);
-        setIsValidState(true);
+        setIsEmailState(true);
         setNotRepeatedState(true);
     };
-    let isValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(newEnteredEmail); //Email format validation
-    let notRepated = !allEmails.includes(newEnteredEmail); // To ensure there is not any used emails
+    let isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(newEnteredEmail); //Email format validation
+    let notRepeated = !allEmails.includes(newEnteredEmail); // To make sure there is not any repeated emails
 
     let formValidation = () => {
-        if (isValid && notRepated) {
+        if (isEmail && notRepeated) {
             setAllEmails([...allEmails, newEnteredEmail.toLocaleLowerCase()]);
             setNewEnteredEmail("");
-            setIsValidState(true);
+            setIsEmailState(true);
             setNotRepeatedState(true);
             loggerDataOnSuccess([...allEmails, newEnteredEmail.toLocaleLowerCase()]);
-        } else if (!notRepated) {
+        } else if (!notRepeated) {
             setNotRepeatedState(false);
         } else {
-            setIsValidState(false);
+            setIsEmailState(false);
         }
     };
     let multipleMailsEventHandler = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -52,7 +52,7 @@ export const InputEmails = ({ loggerDataOnSuccess }: Props) => {
                 onChange={onNewEmailChangeHandler}
                 onKeyDown={multipleMailsEventHandler}
             />
-            <ErrorMessages isValidate={isValidState} notRepated={notRepatedState} />
+            <ErrorMessages isEmail={isEmailState} notRepated={notRepatedState} />
         </>
     );
 };
