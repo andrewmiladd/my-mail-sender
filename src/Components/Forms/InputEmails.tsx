@@ -10,7 +10,7 @@ export const InputEmails = ({ loggerDataOnSuccess }: Props) => {
     const [newEnteredEmail, setNewEnteredEmail] = useState("");
     const [allEmails, setAllEmails] = useState([] as string[]);
     const [isEmailState, setIsEmailState] = useState(true);
-    const [notRepatedState, setNotRepeatedState] = useState(true);
+    const [notRepeatedState, setNotRepeatedState] = useState(true);
 
     let onNewEmailChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewEnteredEmail(e.target.value);
@@ -52,7 +52,7 @@ export const InputEmails = ({ loggerDataOnSuccess }: Props) => {
                 onChange={onNewEmailChangeHandler}
                 onKeyDown={multipleMailsEventHandler}
             />
-            <ErrorMessages isEmail={isEmailState} notRepated={notRepatedState} />
+            <ErrorMessages isEmail={isEmailState} notRepeated={notRepeatedState} />
         </>
     );
 };
