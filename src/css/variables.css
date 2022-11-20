@@ -1,0 +1,41 @@
+:root {
+    --color-transparent: transparent;
+    --color-grey-dark: rgba(21, 17, 17, 1);
+    --color-grey-100: rgba(107, 107, 107, 1);
+    --color-grey-200: rgba(154, 154, 154, 1);
+    --color-grey-300: rgba(200, 200, 200, 1);
+    --color-grey-400: rgba(243, 243, 243, 1);
+    --color-grey-500: rgba(250, 250, 250, 1);
+    --color-red: rgba(255, 67, 81, 1);
+    --color-red-dark: rgba(205, 47, 51, 1);
+    --color-red-light: rgba(255, 67, 81, 0.1);
+    --color-blue: rgba(68, 108, 184, 1);
+    --color-blue-200: rgba(88, 129, 204, 1);
+    --color-blue-light: rgba(68, 108, 184, 0.05);
+
+    --font-sans: "Segoe UI", sans-serif;
+
+    --text-2xs: 0.625rem; /* 10px */
+    --text-xs: 0.75rem; /* 12px */
+    --text-s: 0.8125rem; /* 13px */
+    --text-base: 1rem; /* 16px */
+    --text-xl: 1.25rem; /* 20px */
+    --text-2xl: 1.5625rem; /* 25px */
+    --text-3xl: 1.75rem; /* 28px */
+    --text-4xl: 2.6255rem; /* 42px */
+    --text-5xl: 3.125rem; /* 50px */
+    --text-6xl: 3.75rem; /* 60px */
+
+    --font-thin: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-bold: 700;
+
+    --radius-none: 0;
+    --radius-xs: 0.1875rem; /* 3px */
+    --radius-s: 0.3125rem; /* 5px */
+    --radius-base: 0.625rem; /* 10px */
+    --radius-l: 0.9375rem; /* 15px */
+    --radius-xl: 1.625rem; /* 26px */
+    --radius-circle: 50%;
+}

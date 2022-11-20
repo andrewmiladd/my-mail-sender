@@ -15,17 +15,6 @@ form input {
     font-size: 20px;
     color: wheat;
 }
-form textarea {
-    padding: 5px 15px;
-    border: 1px solid #000;
-    border-radius: 3px;
-    background-color: #181717;
-    font-size: 20px;
-    resize: none;
-    width: 100%;
-    color: white;
-}
-
 form button {
     margin-top: 5px;
     border: none;
@@ -38,18 +27,20 @@ form button {
     cursor: pointer;
     border-radius: 3px;
 }
-form input:focus,
-form textarea:focus {
+form input:focus {
     border: 1px solid #00fff0;
     color: #00fff0;
     transition: all 0.3s ease;
 }
-form input:focus::placeholder,
-form textarea:focus::placeholder {
+form input:focus::placeholder {
     padding-left: 4px;
     color: #00fff0;
     transition: all 0.3s ease;
 }
 label {
     font-size: 30px;
+}
+
+.inputMessage {
+    width: 100%;
 }

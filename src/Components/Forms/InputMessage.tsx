@@ -1,9 +1,11 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
-
+import styles from "./InputMessage.module.css";
 interface MessageProp {
+    className: string;
+
     setNewMessageFromParent: React.Dispatch<React.SetStateAction<string>>;
 }
-export const InputMessage = ({ setNewMessageFromParent }: MessageProp) => {
+export const InputMessage = ({ setNewMessageFromParent, className }: MessageProp) => {
     const [message, setMessage] = useState("");
     const [isValidMessage, setIsValidMessage] = useState(true);
 
@@ -24,11 +26,11 @@ export const InputMessage = ({ setNewMessageFromParent }: MessageProp) => {
             <textarea
                 cols={35}
                 rows={10}
+                className={`${styles.textarea} ${className}`}
                 placeholder="Enter Your Message"
                 value={message.trimStart()}
                 onKeyDown={messageEventHandler}
                 onChange={messageInputhandler}
-                style={{ border: "1px solid" }}
             />
             {!isValidMessage && (
                 <p style={{ color: "red", margin: "0" }}>*Please Enter a Message</p>

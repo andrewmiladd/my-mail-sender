@@ -1,0 +1,13 @@
+.textarea {
+    padding: 8px;
+    border: 2px solid var(--color-grey-300);
+    border-radius: var(--radius-s);
+    font-size: var(--text-base);
+    font-family: var(--font-sans);
+    resize: none;
+    transition: all 0.3s ease;
+}
+
+.textarea:focus {
+    border-color: var(--color-blue);
+}

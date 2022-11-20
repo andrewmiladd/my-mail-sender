@@ -24,7 +24,10 @@ export const FormSendMail = () => {
                 <label> To </label>
                 <InputEmails loggerDataOnSuccess={setAllEmails} />
                 <label>Your Message</label>
-                <InputMessage setNewMessageFromParent={setNewMessage} />
+                <InputMessage
+                    className={styles.inputMessage}
+                    setNewMessageFromParent={setNewMessage}
+                />
             </div>
             <button type="submit">Send Your Message</button>
         </form>
