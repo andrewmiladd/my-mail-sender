@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import styles from "./Forms.modules.css";
+import styles from "./FormSendMail.module.css";
 import { InputEmails } from "./InputEmails";
 import { InputMessage } from "./InputMessage";
 
