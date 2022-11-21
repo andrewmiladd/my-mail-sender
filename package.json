@@ -10,6 +10,7 @@
         "@types/node": "^16.18.3",
         "@types/react": "^18.0.25",
         "@types/react-dom": "^18.0.8",
+        "formik": "^2.2.9",
         "node-mailjet": "^5.1.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -40,5 +41,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "yup": "^0.32.11"
     }
 }

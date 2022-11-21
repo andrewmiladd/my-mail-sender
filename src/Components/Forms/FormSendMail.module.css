@@ -34,3 +34,6 @@
 .inputMessage {
     width: 100%;
 }
+.inputError:focus{
+    border-color: red;
+}
