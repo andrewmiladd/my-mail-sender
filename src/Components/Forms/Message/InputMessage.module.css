@@ -5,7 +5,9 @@
     font-size: var(--text-base);
     font-family: var(--font-sans);
     resize: none;
+    background-color: var(--color-grey-400);
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .textarea:focus {

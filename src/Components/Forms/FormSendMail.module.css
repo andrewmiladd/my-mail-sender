@@ -1,39 +1,37 @@
 .myLabel {
-    font-size: var( --text-2xl)
+    font-size: var(--text-2xl);
 }
 .myInput {
     width: 100%;
     height: 50px;
     margin: 4px 0;
     border-radius: 10px;
-    background-color: var( --color-grey-dark);
+    background-color: var(--color-grey-400);
     padding: 0 15px;
-    font-size: var( --text-xl);
-    color: var( --color-grey-400);
+    font-size: var(--text-xl);
+    color: #000000;
 }
 .myButton {
     margin-top: 5px;
     border: none;
-    background-color: rgb(18, 247, 247);
-    color: var(--color-grey-dark);
+    background-color: var(--color-blue);
+    color: var(--color-grey-500);
     padding: 10px 0;
     width: 100%;
-    font-size: var( --text-xl);
+    font-size: var(--text-xl);
     font-weight: 800;
     cursor: pointer;
     border-radius: 3px;
 }
 .myInput:focus {
-    border: #00fff0 solid 1.5px;
+    border: #68817f solid 1.5px;
 }
 .myInput:focus::placeholder {
     padding-left: 4px;
-    color: #00fff0;
+    color: #68817f;
     transition: all 0.3s ease;
 }
-.inputMessage {
-    width: 100%;
-}
-.inputError:focus{
+
+.inputError:focus {
     border-color: red;
 }

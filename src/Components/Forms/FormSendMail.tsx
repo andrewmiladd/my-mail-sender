@@ -9,7 +9,8 @@ export const FormSendMail = () => {
     const [allEmails, setAllEmails] = useState([] as string[]);
 
     let onSubmit = (values: any, actions: any) => {
-        console.log([...allEmails, { message: values.message }]);
+        let displayedEmails = allEmails.length === 0 ? values.email : [...allEmails];
+        console.log(displayedEmails, { message: values.message });
         setAllEmails([]);
         actions.resetForm();
     };
@@ -17,7 +18,7 @@ export const FormSendMail = () => {
     const { values, errors, handleChange, handleSubmit, touched } = useFormik({
         initialValues: { email: "", message: "" },
         onSubmit: onSubmit,
-        validationSchema: formFormat,
+        validationSchema: allEmails.length === 0 ? formFormat : "",
     });
 
     return (
