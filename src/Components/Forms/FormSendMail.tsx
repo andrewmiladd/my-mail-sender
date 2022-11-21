@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import styles from "./FormSendMail.module.css";
-import { InputEmails } from "./InputEmails";
-import { InputMessage } from "./InputMessage";
+import { InputEmails } from "./Email/InputEmails";
+import { InputMessage } from "./Messages/InputMessage";
 
 export const FormSendMail = () => {
     //Adding the States to receive data from children components
@@ -22,14 +22,19 @@ export const FormSendMail = () => {
             <h1>Your Mail Sender</h1>
             <div className={styles.items}>
                 <label className={styles.myLabel}> To </label>
-                <InputEmails loggerDataOnSuccess={setAllEmails} classNameFromParent={styles.myInput} />
+                <InputEmails
+                    loggerDataOnSuccess={setAllEmails}
+                    classNameFromParent={styles.myInput}
+                />
                 <label className={styles.myLabel}>Your Message</label>
                 <InputMessage
                     className={styles.inputMessage}
                     setNewMessageFromParent={setNewMessage}
                 />
             </div>
-            <button type="submit" className={styles.myButton}>Send Your Message</button>
+            <button type="submit" className={styles.myButton}>
+                Send Your Message
+            </button>
         </form>
     );
 };
