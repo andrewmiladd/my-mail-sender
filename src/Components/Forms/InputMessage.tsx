@@ -9,7 +9,7 @@ export const InputMessage = ({ setNewMessageFromParent, className }: MessageProp
     const [message, setMessage] = useState("");
     const [isValidMessage, setIsValidMessage] = useState(true);
 
-    let messageInputhandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    let messageInputHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setMessage(e.target.value);
         setNewMessageFromParent(e.target.value);
         setIsValidMessage(true);
@@ -30,7 +30,7 @@ export const InputMessage = ({ setNewMessageFromParent, className }: MessageProp
                 placeholder="Enter Your Message"
                 value={message.trimStart()}
                 onKeyDown={messageEventHandler}
-                onChange={messageInputhandler}
+                onChange={messageInputHandler}
             />
             {!isValidMessage && (
                 <p style={{ color: "red", margin: "0" }}>*Please Enter a Message</p>

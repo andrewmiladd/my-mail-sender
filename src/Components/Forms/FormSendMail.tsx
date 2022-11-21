@@ -4,7 +4,7 @@ import { InputEmails } from "./InputEmails";
 import { InputMessage } from "./InputMessage";
 
 export const FormSendMail = () => {
-    //Adding the States to recieve data from children components
+    //Adding the States to receive data from children components
     const [allEmails, setAllEmails] = useState([] as string[]);
     const [newMessage, setNewMessage] = useState("");
 
@@ -21,15 +21,15 @@ export const FormSendMail = () => {
         <form onSubmit={formSubmitHandler}>
             <h1>Your Mail Sender</h1>
             <div className={styles.items}>
-                <label> To </label>
-                <InputEmails loggerDataOnSuccess={setAllEmails} />
-                <label>Your Message</label>
+                <label className={styles.myLabel}> To </label>
+                <InputEmails loggerDataOnSuccess={setAllEmails} classNameFromParent={styles.myInput} />
+                <label className={styles.myLabel}>Your Message</label>
                 <InputMessage
                     className={styles.inputMessage}
                     setNewMessageFromParent={setNewMessage}
                 />
             </div>
-            <button type="submit">Send Your Message</button>
+            <button type="submit" className={styles.myButton}>Send Your Message</button>
         </form>
     );
 };

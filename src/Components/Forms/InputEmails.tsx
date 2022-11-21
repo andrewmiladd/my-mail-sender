@@ -5,8 +5,9 @@ import { ErrorMessages } from "./ErrorMessages";
 //Adding the data to FormSendMail Component
 interface Props {
     loggerDataOnSuccess: React.Dispatch<React.SetStateAction<string[]>>;
+    classNameFromParent: string;
 }
-export const InputEmails = ({ loggerDataOnSuccess }: Props) => {
+export const InputEmails = ({ loggerDataOnSuccess, classNameFromParent }: Props) => {
     const [newEnteredEmail, setNewEnteredEmail] = useState("");
     const [allEmails, setAllEmails] = useState([] as string[]);
     const [isEmailState, setIsEmailState] = useState(true);
@@ -51,6 +52,7 @@ export const InputEmails = ({ loggerDataOnSuccess }: Props) => {
                 value={newEnteredEmail.toLocaleLowerCase().trim()}
                 onChange={onNewEmailChangeHandler}
                 onKeyDown={multipleMailsEventHandler}
+                className={`${classNameFromParent}`}
             />
             <ErrorMessages isEmail={isEmailState} notRepeated={notRepeatedState} />
         </>

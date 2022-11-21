@@ -17,15 +17,11 @@
 .my__button {
     background-color: white;
     width: 22px;
-    height: 50%;
+    height: 75%;
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    font: small-caption;
     margin-left: 10px;
-    margin-bottom: 7px;
-    padding-bottom: 15px;
-    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -9,5 +9,5 @@
 }
 
 .textarea:focus {
-    border-color: var(--color-blue);
+    border-color: var(--color-blue-200);
 }
