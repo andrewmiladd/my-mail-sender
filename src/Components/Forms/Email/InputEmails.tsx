@@ -1,12 +1,13 @@
-import React, { useState, KeyboardEvent } from "react";
+import React, { KeyboardEvent } from "react";
 import { EmailsList } from "./EmailsList";
 
-//Adding the data to FormSendMail Component
 interface Props {
     loggerDataOnSuccess: React.Dispatch<React.SetStateAction<string[]>>;
     classNameFromParent: string;
     emailValue: string;
-    handleChange: any;
+    handleChange: React.ChangeEventHandler<HTMLInputElement>;
+    allEmails: string[];
+    setAllEmails: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export const InputEmails = ({
@@ -14,14 +15,18 @@ export const InputEmails = ({
     classNameFromParent,
     emailValue,
     handleChange,
+    allEmails,
+    setAllEmails,
 }: Props) => {
-    const [allEmails, setAllEmails] = useState([] as string[]);
-    
+    let notRepeated = !allEmails.includes(emailValue);
+    let isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{1,4}$/i.test(emailValue);
+
     let multipleMailsEventHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (["Enter", ",", "Tab"].includes(e.key)) {
+        if (["Enter", ","].includes(e.key)) {
             e.preventDefault();
-            setAllEmails([...allEmails, emailValue]);
-            loggerDataOnSuccess([...allEmails, emailValue]);
+            if (notRepeated && isEmail) {
+                setAllEmails([...allEmails, emailValue]);
+            }
         }
     };
     return (

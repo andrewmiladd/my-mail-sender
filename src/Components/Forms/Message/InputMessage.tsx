@@ -1,26 +1,11 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from "react";
+import React from "react";
 import styles from "./InputMessage.module.css";
 interface MessageProp {
     className: string;
-
-    setNewMessageFromParent: React.Dispatch<React.SetStateAction<string>>;
+    messageValue: string;
+    handleChange: React.ChangeEventHandler<HTMLTextAreaElement>;
 }
-export const InputMessage = ({ setNewMessageFromParent, className }: MessageProp) => {
-    const [message, setMessage] = useState("");
-    const [isValidMessage, setIsValidMessage] = useState(true);
-
-    let messageInputHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setMessage(e.target.value);
-        setNewMessageFromParent(e.target.value);
-        setIsValidMessage(true);
-    };
-
-    let messageEventHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-        if (["Enter", ",", "Tab"].includes(e.key)) {
-            message.length < 1 && setIsValidMessage(false);
-        }
-    };
-
+export const InputMessage = ({ className, messageValue, handleChange }: MessageProp) => {
     return (
         <>
             <textarea
@@ -28,13 +13,10 @@ export const InputMessage = ({ setNewMessageFromParent, className }: MessageProp
                 rows={10}
                 className={`${styles.textarea} ${className}`}
                 placeholder="Enter Your Message"
-                value={message.trimStart()}
-                onKeyDown={messageEventHandler}
-                onChange={messageInputHandler}
+                id="message"
+                value={messageValue}
+                onChange={handleChange}
             />
-            {!isValidMessage && (
-                <p style={{ color: "red", margin: "0" }}>*Please Enter a Message</p>
-            )}
         </>
     );
 };
