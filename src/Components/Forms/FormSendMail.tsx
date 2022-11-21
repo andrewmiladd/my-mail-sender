@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import styles from "./FormSendMail.module.css";
 import { InputEmails } from "./Email/InputEmails";
-import { InputMessage } from "./Messages/InputMessage";
+import { InputMessage } from "./Message/InputMessage";
 
 export const FormSendMail = () => {
     //Adding the States to receive data from children components
