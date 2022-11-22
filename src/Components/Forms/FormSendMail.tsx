@@ -6,10 +6,14 @@ import { useFormik } from "formik";
 import { formFormat } from "./Validation/Validation";
 import { EmailsList } from "./Email/EmailsList";
 
+interface FormFields {
+    email: string;
+    message: string;
+}
 export const FormSendMail = () => {
     const [allEmails, setAllEmails] = useState([] as string[]);
 
-    let onSubmit = (values: { email: string; message: string }, actions: any) => {
+    let onSubmit = (values: FormFields, actions: any) => {
         let displayedEmails = allEmails.length === 0 ? values.email : allEmails;
         console.log([displayedEmails, { message: values.message }]);
         setAllEmails([]);
