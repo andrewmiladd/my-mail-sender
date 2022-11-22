@@ -4,13 +4,14 @@ import { InputEmails } from "./Email/InputEmails";
 import { InputMessage } from "./Message/InputMessage";
 import { useFormik } from "formik";
 import { formFormat } from "./Validation/Validation";
+import { EmailsList } from "./Email/EmailsList";
 
 export const FormSendMail = () => {
     const [allEmails, setAllEmails] = useState([] as string[]);
 
-    let onSubmit = (values: any, actions: any) => {
-        let displayedEmails = allEmails.length === 0 ? values.email : [...allEmails];
-        console.log(displayedEmails, { message: values.message });
+    let onSubmit = (values: { email: string; message: string }, actions: any) => {
+        let displayedEmails = allEmails.length === 0 ? values.email : allEmails;
+        console.log([displayedEmails, { message: values.message }]);
         setAllEmails([]);
         actions.resetForm();
     };
@@ -25,13 +26,11 @@ export const FormSendMail = () => {
         <form onSubmit={handleSubmit}>
             <h1>Your Mail Sender</h1>
             <label className={styles.myLabel}> To </label>
+            <EmailsList mails={allEmails} setEmails={setAllEmails} />
             <InputEmails
                 allEmails={allEmails}
                 setAllEmails={setAllEmails}
-                loggerDataOnSuccess={setAllEmails}
-                classNameFromParent={`${styles.myInput} ${
-                    errors.email && touched.email ? styles.inputError : ""
-                }`}
+                classNameFromParent={`${styles.myInput} `}
                 emailValue={values.email}
                 handleChange={handleChange}
             />

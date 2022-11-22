@@ -1,8 +1,6 @@
 import React, { KeyboardEvent } from "react";
-import { EmailsList } from "./EmailsList";
 
 interface Props {
-    loggerDataOnSuccess: React.Dispatch<React.SetStateAction<string[]>>;
     classNameFromParent: string;
     emailValue: string;
     handleChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -11,7 +9,6 @@ interface Props {
 }
 
 export const InputEmails = ({
-    loggerDataOnSuccess,
     classNameFromParent,
     emailValue,
     handleChange,
@@ -31,11 +28,6 @@ export const InputEmails = ({
     };
     return (
         <>
-            <EmailsList
-                mails={allEmails}
-                setEmails={setAllEmails}
-                listUpdaterOnTheConsole={loggerDataOnSuccess}
-            />
             <input
                 placeholder="Enter a valid email"
                 value={emailValue}

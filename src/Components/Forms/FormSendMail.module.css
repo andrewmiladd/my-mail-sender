@@ -31,7 +31,3 @@
     color: #68817f;
     transition: all 0.3s ease;
 }
-
-.inputError:focus {
-    border-color: red;
-}
