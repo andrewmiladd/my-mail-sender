@@ -5,6 +5,7 @@ import { InputMessage } from "./Message/InputMessage";
 import { useFormik } from "formik";
 import { formFormat } from "./Validation/Validation";
 import { EmailsList } from "./Email/EmailsList";
+import axios from "axios";
 
 interface FormFields {
     email: string;
@@ -17,7 +18,15 @@ export const FormSendMail = () => {
 
     let onSubmitHandler = (values: FormFields, actions: any) => {
         let displayedEmails = allEmails.length === 0 ? values.email : [...allEmails];
-        console.log(displayedEmails, { message: values.message });
+        axios
+            .post("http://localhost:8000/sendEmail", {
+                email: displayedEmails,
+                message: values.message,
+            })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => console.log(error));
         setAllEmails([]);
         actions.resetForm();
     };
@@ -27,6 +36,7 @@ export const FormSendMail = () => {
         onSubmit: onSubmitHandler,
         validationSchema: allEmails.length === 0 ? formFormat : "",
     });
+
     return (
         <form onSubmit={handleSubmit}>
             <h1>Your Mail Sender</h1>
