@@ -6,6 +6,8 @@ interface Props {
     handleChange: React.ChangeEventHandler<HTMLInputElement>;
     allEmails: string[];
     setAllEmails: React.Dispatch<React.SetStateAction<string[]>>;
+    errors: string | undefined;
+    touched: boolean | undefined;
 }
 
 export const InputEmails = ({
@@ -14,6 +16,8 @@ export const InputEmails = ({
     handleChange,
     allEmails,
     setAllEmails,
+    errors,
+    touched,
 }: Props) => {
     let notRepeated = !allEmails.includes(emailValue);
     let isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{1,4}$/i.test(emailValue);
@@ -36,6 +40,7 @@ export const InputEmails = ({
                 onKeyDown={multipleMailsEventHandler}
                 className={`${classNameFromParent}`}
             />
+            {errors && touched && <p style={{ color: "red", margin: 0 }}>{errors}</p>}
         </>
     );
 };

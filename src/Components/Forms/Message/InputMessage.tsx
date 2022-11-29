@@ -4,8 +4,16 @@ interface MessageProp {
     className: string;
     messageValue: string;
     handleChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+    errors: string | undefined;
+    touched: boolean | undefined;
 }
-export const InputMessage = ({ className, messageValue, handleChange }: MessageProp) => {
+export const InputMessage = ({
+    className,
+    messageValue,
+    handleChange,
+    errors,
+    touched,
+}: MessageProp) => {
     return (
         <>
             <textarea
@@ -17,6 +25,7 @@ export const InputMessage = ({ className, messageValue, handleChange }: MessageP
                 value={messageValue}
                 onChange={handleChange}
             />
+            {errors && touched && <p style={{ color: "red", margin: 0 }}>{errors}</p>}
         </>
     );
 };

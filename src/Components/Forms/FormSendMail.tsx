@@ -10,22 +10,23 @@ interface FormFields {
     email: string;
     message: string;
 }
+let myInitialValues: FormFields = { email: "", message: "" };
+
 export const FormSendMail = () => {
     const [allEmails, setAllEmails] = useState([] as string[]);
 
-    let onSubmit = (values: FormFields, actions: any) => {
-        let displayedEmails = allEmails.length === 0 ? values.email : allEmails;
-        console.log([displayedEmails, { message: values.message }]);
+    let onSubmitHandler = (values: FormFields, actions: any) => {
+        let displayedEmails = allEmails.length === 0 ? values.email : [...allEmails];
+        console.log(displayedEmails, { message: values.message });
         setAllEmails([]);
         actions.resetForm();
     };
 
     const { values, errors, handleChange, handleSubmit, touched } = useFormik({
-        initialValues: { email: "", message: "" },
-        onSubmit: onSubmit,
+        initialValues: myInitialValues,
+        onSubmit: onSubmitHandler,
         validationSchema: allEmails.length === 0 ? formFormat : "",
     });
-
     return (
         <form onSubmit={handleSubmit}>
             <h1>Your Mail Sender</h1>
@@ -37,19 +38,17 @@ export const FormSendMail = () => {
                 classNameFromParent={`${styles.myInput} `}
                 emailValue={values.email}
                 handleChange={handleChange}
+                errors={errors.email}
+                touched={touched.email}
             />
-            {errors.email && touched.email && (
-                <p style={{ color: "red", margin: 0 }}>{errors.email}</p>
-            )}
             <label className={styles.myLabel}>Your Message</label>
             <InputMessage
                 className={`${styles.inputMessage}`}
                 messageValue={`${values.message}`}
                 handleChange={handleChange}
+                errors={errors.message}
+                touched={touched.message}
             />
-            {errors.message && touched.message && (
-                <p style={{ color: "red", margin: 0 }}>{errors.message}</p>
-            )}
             <button type="submit" className={styles.myButton}>
                 Send Your Message
             </button>

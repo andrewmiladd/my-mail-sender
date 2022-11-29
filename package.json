@@ -11,7 +11,6 @@
         "@types/react": "^18.0.25",
         "@types/react-dom": "^18.0.8",
         "formik": "^2.2.9",
-        "node-mailjet": "^5.1.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-scripts": "5.0.1",
@@ -43,6 +42,9 @@
         ]
     },
     "devDependencies": {
+        "@types/node-mailjet": "^3.3.9",
+        "dotenv": "^16.0.3",
+        "node-mailjet": "^5.1.1",
         "yup": "^0.32.11"
     }
 }
