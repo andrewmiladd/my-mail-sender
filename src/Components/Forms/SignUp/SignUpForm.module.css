@@ -1,0 +1,14 @@
+.mySignUpForm {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+.myHeader {
+    display: flex;
+    align-self: center;
+}
+.myErrorMessages {
+    color: red;
+    margin: 0;
+    margin-left: 10px;
+}
