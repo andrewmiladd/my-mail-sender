@@ -3,6 +3,8 @@ import { Button, TextField } from "@mui/material";
 import styles from "./LoginForm.module.css";
 import { useFormik } from "formik";
 import { loginFormat } from "../Validation/Validation";
+import { EmailInput } from "../Shared Components/EmailInput";
+import { PasswordInput } from "../Shared Components/PasswordInput";
 
 interface LogInFields {
     email: string;
@@ -20,28 +22,22 @@ export const LogInForm = () => {
     return (
         <form className={styles.myLogInForm} onSubmit={handleSubmit}>
             <h2 className={styles.myHeader}>Login</h2>
-            <TextField
-                type="text"
-                label="Email"
-                id="email"
-                value={values.email}
-                onChange={handleChange}
-                sx={{ m: 1 }}
+            <EmailInput
+                emailValue={values.email}
+                handleChange={handleChange}
+                emailError={errors.email}
+                isTouched={touched.email}
+                styles={`${styles.myErrorMessages}`}
             />
-            {errors.email && touched.email && (
-                <p className={styles.myErrorMessages}> {errors.email}</p>
-            )}
-            <TextField
-                type="password"
-                label="Password"
-                id="password"
-                value={values.password}
-                onChange={handleChange}
-                sx={{ m: 1 }}
+
+            <PasswordInput
+                passwordValue={values.password}
+                handleChange={handleChange}
+                passwordError={errors.password}
+                isTouched={touched.password}
+                styles={`${styles.myErrorMessages}`}
             />
-            {errors.password && touched.password && (
-                <p className={styles.myErrorMessages}> {errors.password}</p>
-            )}
+
             <Button type="submit" variant="contained" id={styles.my__button}>
                 Login
             </Button>

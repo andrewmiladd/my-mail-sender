@@ -5,8 +5,8 @@ import { useFormik } from "formik";
 import { signUpFormat } from "../Validation/Validation";
 import axios from "axios";
 import { UserNameInput } from "./UserNameInput";
-import { EmailInput } from "./EmailInput";
-import { PasswordInput } from "./PasswordInput";
+import { EmailInput } from "../Shared Components/EmailInput";
+import { PasswordInput } from "../Shared Components/PasswordInput";
 import { ConfirmPassword } from "./ConfirmPassword";
 
 interface SignUpFields {
