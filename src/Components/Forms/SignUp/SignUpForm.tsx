@@ -1,9 +1,13 @@
 import React from "react";
-import { Button, TextField } from "@mui/material";
-import style from "./SignUpForm.module.css";
+import { Button } from "@mui/material";
+import styles from "./SignUpForm.module.css";
 import { useFormik } from "formik";
 import { signUpFormat } from "../Validation/Validation";
 import axios from "axios";
+import { UserNameInput } from "./UserNameInput";
+import { EmailInput } from "./EmailInput";
+import { PasswordInput } from "./PasswordInput";
+import { ConfirmPassword } from "./ConfirmPassword";
 
 interface SignUpFields {
     username: string;
@@ -13,7 +17,7 @@ interface SignUpFields {
 }
 let onSubmitHandler = (values: SignUpFields, actions: any) => {
     axios({
-        method: "POST",
+        method: "post",
         url: "http://localhost:8000/createUser",
         data: {
             username: values.username,
@@ -36,53 +40,38 @@ export const SignUpForm = () => {
         validationSchema: signUpFormat,
     });
     return (
-        <form className={style.mySignUpForm} onSubmit={handleSubmit}>
-            <h2 className={style.myHeader}>Sign Up</h2>
-            <TextField
-                type="text"
-                label="Username"
-                id="username"
-                sx={{ m: 1 }}
-                value={values.username}
-                onChange={handleChange}
+        <form className={styles.mySignUpForm} onSubmit={handleSubmit}>
+            <h2 className={styles.myHeader}>Sign Up</h2>
+            <UserNameInput
+                usernameValue={values.username}
+                handleChange={handleChange}
+                userNameErrors={errors.username}
+                isTouched={touched.username}
+                styles={`${styles.myErrorMessages}`}
             />
-            {errors.username && touched.username && (
-                <p className={style.myErrorMessages}>{errors.username}</p>
-            )}
-            <TextField
-                type="text"
-                label="Email"
-                sx={{ m: 1 }}
-                value={values.email}
-                id="email"
-                onChange={handleChange}
+
+            <EmailInput
+                emailValue={values.email}
+                handleChange={handleChange}
+                emailError={errors.email}
+                isTouched={touched.email}
+                styles={`${styles.myErrorMessages}`}
             />
-            {errors.email && touched.email && (
-                <p className={style.myErrorMessages}>{errors.email}</p>
-            )}
-            <TextField
-                type="password"
-                label="Password"
-                sx={{ m: 1 }}
-                value={values.password}
-                id="password"
-                onChange={handleChange}
+            <PasswordInput
+                passwordValue={values.password}
+                handleChange={handleChange}
+                passwordError={errors.password}
+                isTouched={touched.password}
+                styles={`${styles.myErrorMessages}`}
             />
-            {errors.password && touched.password && (
-                <p className={style.myErrorMessages}>{errors.password}</p>
-            )}
-            <TextField
-                type="password"
-                label="Confirm Password"
-                id="confirmPassword"
-                sx={{ m: 1 }}
-                value={values.confirmPassword}
-                onChange={handleChange}
+            <ConfirmPassword
+                confirmPasswordValue={values.confirmPassword}
+                handleChange={handleChange}
+                confirmPasswordError={errors.confirmPassword}
+                isTouched={touched.confirmPassword}
+                styles={`${styles.myErrorMessages}`}
             />
-            {errors.confirmPassword && touched.confirmPassword && (
-                <p className={style.myErrorMessages}>{errors.confirmPassword}</p>
-            )}
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" id={styles.my__button}>
                 Register
             </Button>
         </form>
