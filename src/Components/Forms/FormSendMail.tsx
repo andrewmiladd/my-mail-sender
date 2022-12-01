@@ -18,11 +18,11 @@ export const FormSendMail = () => {
 
     let onSubmitHandler = (values: FormFields, actions: any) => {
         let displayedEmails = allEmails.length === 0 ? values.email : [...allEmails];
-        axios
-            .post("http://localhost:8000/sendEmail", {
-                email: displayedEmails,
-                message: values.message,
-            })
+        axios({
+            method: "post",
+            url: "http://localhost:8000/sendEmail",
+            data: { email: displayedEmails, message: values.message },
+        })
             .then(response => {
                 console.log(response);
             })

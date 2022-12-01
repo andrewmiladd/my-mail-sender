@@ -12,14 +12,19 @@ interface SignUpFields {
     confirmPassword: string;
 }
 let onSubmitHandler = (values: SignUpFields, actions: any) => {
-    axios
-        .post("http://localhost:8000/createUser", {
+    axios({
+        method: "POST",
+        url: "http://localhost:8000/createUser",
+        data: {
             username: values.username,
             email: values.email,
             password: values.password,
             confirmPassword: values.confirmPassword,
+        },
+    })
+        .then(response => {
+            console.log(response);
         })
-        .then(response => console.log(response))
         .catch(error => console.log(error));
     actions.resetForm();
 };
