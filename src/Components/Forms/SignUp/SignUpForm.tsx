@@ -3,6 +3,7 @@ import { Button, TextField } from "@mui/material";
 import style from "./SignUpForm.module.css";
 import { useFormik } from "formik";
 import { signUpFormat } from "../Validation/Validation";
+import axios from "axios";
 
 interface SignUpFields {
     username: string;
@@ -10,14 +11,23 @@ interface SignUpFields {
     password: string;
     confirmPassword: string;
 }
-
+let onSubmitHandler = (values: SignUpFields, actions: any) => {
+    axios
+        .post("http://localhost:8000/createUser", {
+            username: values.username,
+            email: values.email,
+            password: values.password,
+            confirmPassword: values.confirmPassword,
+        })
+        .then(response => console.log(response))
+        .catch(error => console.log(error));
+    actions.resetForm();
+};
 let myInitialValues: SignUpFields = { username: "", email: "", password: "", confirmPassword: "" };
 export const SignUpForm = () => {
     const { values, errors, handleChange, handleSubmit, touched } = useFormik({
         initialValues: myInitialValues,
-        onSubmit: values => {
-            alert(JSON.stringify(values));
-        },
+        onSubmit: onSubmitHandler,
         validationSchema: signUpFormat,
     });
     return (
