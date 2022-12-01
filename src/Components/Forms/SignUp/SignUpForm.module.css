@@ -5,6 +5,7 @@
     box-shadow: 20px 10px 30px 10px rgb(75, 75, 75);
     margin-top: 10%;
     border-radius: 10px;
+    background-color: #B9FFF8;
 }
 .myHeader {
     display: flex;
@@ -14,4 +15,12 @@
     color: red;
     margin: 0;
     margin-left: 10px;
+}
+#my__button {
+    background-color: #FF9551;
+    color: black;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 30px;
+    margin-top: 10px;
 }

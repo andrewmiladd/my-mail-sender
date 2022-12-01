@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
-import style from "./LoginForm.module.css";
+import styles from "./LoginForm.module.css";
 import { useFormik } from "formik";
 import { loginFormat } from "../Validation/Validation";
 
@@ -18,8 +18,8 @@ export const LogInForm = () => {
         validationSchema: loginFormat,
     });
     return (
-        <form className={style.myLogInForm} onSubmit={handleSubmit}>
-            <h2 className={style.myHeader}>Login</h2>
+        <form className={styles.myLogInForm} onSubmit={handleSubmit}>
+            <h2 className={styles.myHeader}>Login</h2>
             <TextField
                 type="text"
                 label="Email"
@@ -29,7 +29,7 @@ export const LogInForm = () => {
                 sx={{ m: 1 }}
             />
             {errors.email && touched.email && (
-                <p className={style.myErrorMessages}> {errors.email}</p>
+                <p className={styles.myErrorMessages}> {errors.email}</p>
             )}
             <TextField
                 type="password"
@@ -40,9 +40,9 @@ export const LogInForm = () => {
                 sx={{ m: 1 }}
             />
             {errors.password && touched.password && (
-                <p className={style.myErrorMessages}> {errors.password}</p>
+                <p className={styles.myErrorMessages}> {errors.password}</p>
             )}
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" id={styles.my__button}>
                 Login
             </Button>
         </form>
