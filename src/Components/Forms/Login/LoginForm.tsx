@@ -1,10 +1,11 @@
 import React from "react";
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import styles from "./LoginForm.module.css";
 import { useFormik } from "formik";
 import { loginFormat } from "../Validation/Validation";
 import { EmailInput } from "../Shared Components/EmailInput";
 import { PasswordInput } from "../Shared Components/PasswordInput";
+import axios from "axios";
 
 interface LogInFields {
     email: string;
@@ -15,7 +16,13 @@ export const LogInForm = () => {
     const { values, errors, handleChange, handleSubmit, touched } = useFormik({
         initialValues: myInitialValues,
         onSubmit: values => {
-            alert(JSON.stringify(values));
+            axios
+                .post("http://localhost:8000/users/login", {
+                    email: values.email,
+                    password: values.password,
+                })
+                .then(response => console.log(response))
+                .catch(error => console.log(error));
         },
         validationSchema: loginFormat,
     });
