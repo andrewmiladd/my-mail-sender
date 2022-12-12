@@ -45,7 +45,7 @@ export const FormSendMail = () => {
                 to="/login"
                 style={{ display: "flex", justifyContent: "flex-end" }}
                 onClick={() => {
-                    localStorage.removeItem("authorizedUser");
+                    localStorage.setItem("authorizedUser", "0");
                 }}
             >
                 Logout

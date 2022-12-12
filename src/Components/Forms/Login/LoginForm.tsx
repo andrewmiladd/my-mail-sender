@@ -24,8 +24,8 @@ export const LogInForm = () => {
                 })
                 .then(response => {
                     if (response.data.access_token) {
-                        console.log(response.data.access_token);
                         localStorage.setItem("authorizedUser", "1");
+                        window.location.href = "/";
                     }
                 })
                 .catch(error => console.log(error));
