@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import { formFormat } from "./Validation/Validation";
 import { EmailsList } from "./Email/EmailsList";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 interface FormFields {
     email: string;
@@ -40,6 +41,15 @@ export const FormSendMail = () => {
     return (
         <form onSubmit={handleSubmit}>
             <h1>Your Mail Sender</h1>
+            <Link
+                to="/login"
+                style={{ display: "flex", justifyContent: "flex-end" }}
+                onClick={() => {
+                    localStorage.removeItem("authorizedUser");
+                }}
+            >
+                Logout
+            </Link>
             <label className={styles.myLabel}> To </label>
             <EmailsList mails={allEmails} setEmails={setAllEmails} />
             <InputEmails

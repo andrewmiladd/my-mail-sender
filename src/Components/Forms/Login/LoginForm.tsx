@@ -18,11 +18,16 @@ export const LogInForm = () => {
         initialValues: myInitialValues,
         onSubmit: values => {
             axios
-                .post("http://localhost:8000/users/login", {
+                .post("http://localhost:8000/auth", {
                     email: values.email,
                     password: values.password,
                 })
-                .then(response => console.log(response))
+                .then(response => {
+                    if (response.data.access_token) {
+                        console.log(response.data.access_token);
+                        localStorage.setItem("authorizedUser", "1");
+                    }
+                })
                 .catch(error => console.log(error));
         },
         validationSchema: loginFormat,
