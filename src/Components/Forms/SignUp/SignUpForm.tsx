@@ -19,7 +19,7 @@ interface SignUpFields {
 let onSubmitHandler = (values: SignUpFields, actions: any) => {
     axios({
         method: "post",
-        url: "http://localhost:8000/createUser",
+        url: "http://localhost:8000/users",
         data: {
             username: values.username,
             email: values.email,
