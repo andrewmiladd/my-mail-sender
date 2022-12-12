@@ -6,6 +6,7 @@ import { loginFormat } from "../Validation/Validation";
 import { EmailInput } from "../Shared Components/EmailInput";
 import { PasswordInput } from "../Shared Components/PasswordInput";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 interface LogInFields {
     email: string;
@@ -48,6 +49,10 @@ export const LogInForm = () => {
             <Button type="submit" variant="contained" id={styles.my__button}>
                 Login
             </Button>
+            <p className={styles.myMessage}>Doesn't have an account ?</p>
+            <Link to="/signUp" className={styles.myMessage}>
+                signUp
+            </Link>
         </form>
     );
 };

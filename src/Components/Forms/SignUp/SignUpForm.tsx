@@ -8,6 +8,7 @@ import { UserNameInput } from "./UserNameInput";
 import { EmailInput } from "../Shared Components/EmailInput";
 import { PasswordInput } from "../Shared Components/PasswordInput";
 import { ConfirmPassword } from "./ConfirmPassword";
+import { Link } from "react-router-dom";
 
 interface SignUpFields {
     username: string;
@@ -49,7 +50,6 @@ export const SignUpForm = () => {
                 isTouched={touched.username}
                 styles={`${styles.myErrorMessages}`}
             />
-
             <EmailInput
                 emailValue={values.email}
                 handleChange={handleChange}
@@ -74,6 +74,10 @@ export const SignUpForm = () => {
             <Button type="submit" variant="contained" id={styles.my__button}>
                 Register
             </Button>
+            <p className={styles.myMessage}>Have an account already?</p>
+            <Link to={"/login"} className={styles.myMessage}>
+                Sign in
+            </Link>
         </form>
     );
 };
