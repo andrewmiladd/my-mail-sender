@@ -19,10 +19,12 @@ export const FormSendMail = () => {
 
     let onSubmitHandler = (values: FormFields, actions: any) => {
         let displayedEmails = allEmails.length === 0 ? values.email : [...allEmails];
+        let token = localStorage.getItem("token");
         axios({
             method: "post",
             url: "http://localhost:8000/sendEmail",
             data: { email: displayedEmails, message: values.message },
+            headers: { Authorization: `Bearer ${token}` },
         })
             .then(response => {
                 console.log(response);
@@ -46,6 +48,7 @@ export const FormSendMail = () => {
                 style={{ display: "flex", justifyContent: "flex-end" }}
                 onClick={() => {
                     localStorage.setItem("authorizedUser", "0");
+                    localStorage.removeItem("token");
                 }}
             >
                 Logout
