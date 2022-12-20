@@ -7,6 +7,7 @@ import { formFormat } from "./Validation/Validation";
 import { EmailsList } from "./Email/EmailsList";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 interface FormFields {
     email: string;
@@ -50,7 +51,7 @@ export const FormSendMail = () => {
                     localStorage.removeItem("token");
                 }}
             >
-                Logout
+                <Button variant="contained">Logout</Button>
             </Link>
             <label className={styles.myLabel}> To </label>
             <EmailsList mails={allEmails} setEmails={setAllEmails} />
