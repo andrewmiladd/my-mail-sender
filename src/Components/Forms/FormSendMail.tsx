@@ -45,7 +45,7 @@ export const FormSendMail = () => {
             <h1>Your Mail Sender</h1>
             <Link
                 to="/login"
-                style={{ display: "flex", justifyContent: "flex-end" }}
+                style={{ display: "flex", justifyContent: "flex-end", marginLeft: "100%" }}
                 onClick={() => {
                     localStorage.removeItem("token");
                 }}
