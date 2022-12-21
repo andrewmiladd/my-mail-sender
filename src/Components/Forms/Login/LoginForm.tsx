@@ -18,7 +18,7 @@ export const LogInForm = () => {
         initialValues: myInitialValues,
         onSubmit: values => {
             axios
-                .post("http://localhost:8000/auth", {
+                .post("https://mail-sender-nestjs-production.up.railway.app/auth", {
                     email: values.email,
                     password: values.password,
                 })

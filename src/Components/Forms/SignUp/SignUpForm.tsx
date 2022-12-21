@@ -19,7 +19,7 @@ interface SignUpFields {
 let onSubmitHandler = (values: SignUpFields, actions: any) => {
     axios({
         method: "post",
-        url: "http://localhost:8000/users",
+        url: "https://mail-sender-nestjs-production.up.railway.app/users",
         data: {
             username: values.username,
             email: values.email,

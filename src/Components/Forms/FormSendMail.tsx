@@ -23,7 +23,7 @@ export const FormSendMail = () => {
         let token = localStorage.getItem("token");
         axios({
             method: "post",
-            url: "http://localhost:8000/sendEmail",
+            url: "https://mail-sender-nestjs-production.up.railway.app/sendEmail",
             data: { email: displayedEmails, message: values.message },
             headers: { Authorization: `Bearer ${token}` },
         })
