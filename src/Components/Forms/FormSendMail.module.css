@@ -1,5 +1,6 @@
 .myLabel {
     font-size: var(--text-2xl);
+    color: white;
 }
 .myInput {
     width: 100%;
@@ -15,7 +16,7 @@
     margin-top: 5px;
     border: none;
     background-color: var(--color-yellow);
-    color: var(--color-grey-dark);
+    color: var(--color-grey);
     padding: 10px 0;
     width: 100%;
     font-size: var(--text-xl);

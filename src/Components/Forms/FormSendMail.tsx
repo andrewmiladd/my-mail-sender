@@ -43,7 +43,7 @@ export const FormSendMail = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h1>Your Mail Sender</h1>
+            <h1 style={{ color: "white" }}>Your Mail Sender</h1>
             <Link
                 to="/login"
                 className={styles.myLink}
