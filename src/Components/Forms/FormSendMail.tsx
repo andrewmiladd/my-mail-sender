@@ -51,7 +51,9 @@ export const FormSendMail = () => {
                     localStorage.removeItem("token");
                 }}
             >
-                <Button variant="contained">Logout</Button>
+                <Button variant="contained" color="error">
+                    <span className="material-symbols-outlined">logout</span>
+                </Button>
             </Link>
             <label className={styles.myLabel}> To </label>
             <EmailsList mails={allEmails} setEmails={setAllEmails} />
