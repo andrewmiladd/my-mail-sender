@@ -33,3 +33,9 @@
     margin-bottom: 10px;
     font-size: small;
 }
+@media screen and (max-width: 700px) {
+    .mySignUpForm {
+        width: 100%;
+        margin-left: 0;
+    }
+}
