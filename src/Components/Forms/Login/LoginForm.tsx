@@ -34,7 +34,7 @@ export const LogInForm = () => {
     });
     return (
         <form className={styles.myLogInForm} onSubmit={handleSubmit}>
-            <h2 className={styles.myHeader}>Login</h2>
+            <h2 className={styles.myHeader}>Log in</h2>
             <EmailInput
                 emailValue={values.email}
                 handleChange={handleChange}
@@ -54,9 +54,9 @@ export const LogInForm = () => {
             <Button type="submit" variant="contained" id={styles.my__button}>
                 Login
             </Button>
-            <p className={styles.myMessage}>Doesn't have an account ?</p>
+            <p className={styles.myMessage}>Don't have an account ?</p>
             <Link to="/signUp" className={styles.myMessage}>
-                signUp
+                Sign up
             </Link>
         </form>
     );
