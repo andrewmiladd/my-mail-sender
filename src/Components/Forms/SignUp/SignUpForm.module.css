@@ -5,6 +5,8 @@
     margin-top: 10%;
     border-radius: 10px;
     background-color: white;
+    width: 50%;
+    margin-left: 25%;
 }
 .myHeader {
     display: flex;
@@ -19,8 +21,8 @@
 #my__button {
     background-color: #736bc4;
     color: white;
-    width: 90%;
-    margin-left: 5%;
+    width: 95%;
+    margin-left: 2%;
     margin-bottom: 30px;
     margin-top: 10px;
 }
@@ -28,4 +30,6 @@
     margin: 0.5px;
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
+    font-size: small;
 }
