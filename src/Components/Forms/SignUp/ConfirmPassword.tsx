@@ -22,6 +22,7 @@ export const ConfirmPassword = ({
                 label="Confirm Password"
                 id="confirmPassword"
                 sx={{ m: 1 }}
+                size={"small"}
                 value={confirmPasswordValue}
                 onChange={handleChange}
             />

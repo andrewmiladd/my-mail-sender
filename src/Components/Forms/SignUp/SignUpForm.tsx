@@ -74,10 +74,12 @@ export const SignUpForm = () => {
             <Button type="submit" variant="contained" id={styles.my__button}>
                 Register
             </Button>
-            <p className={styles.myMessage}>Have an account already?</p>
-            <Link to={"/login"} className={styles.myMessage}>
-                Sign in
-            </Link>
+            <p className={styles.myMessage}>
+                Have an account already?
+                <Link to={"/login"} className={styles.myMessage} style={{ marginLeft: "7px" }}>
+                    Sign in
+                </Link>
+            </p>
         </form>
     );
 };
