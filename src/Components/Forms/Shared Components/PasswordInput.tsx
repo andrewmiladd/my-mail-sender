@@ -21,6 +21,7 @@ export const PasswordInput = ({
                 label="Password"
                 id="password"
                 sx={{ m: 1 }}
+                size={"small"}
                 value={passwordValue}
                 onChange={handleChange}
             />

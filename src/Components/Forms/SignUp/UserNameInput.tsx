@@ -23,6 +23,7 @@ export const UserNameInput = ({
                 id="username"
                 sx={{ m: 1 }}
                 value={usernameValue}
+                size={"small"}
                 onChange={handleChange}
             />
             {userNameErrors && isTouched && <p className={styles}>{userNameErrors}</p>}

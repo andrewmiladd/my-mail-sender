@@ -16,6 +16,7 @@ export const EmailInput = ({ emailValue, handleChange, emailError, isTouched, st
                 label="Email"
                 id="email"
                 sx={{ m: 1 }}
+                size={"small"}
                 value={emailValue}
                 onChange={handleChange}
             />
