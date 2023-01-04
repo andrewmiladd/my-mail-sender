@@ -18,6 +18,7 @@ interface LogInFields {
 let myInitialValues: LogInFields = { email: "", password: "" };
 export const LogInForm = () => {
     const [isRightCredentials, setIsRightCredentials] = useState(true);
+
     const { values, errors, handleChange, handleSubmit, touched } = useFormik({
         initialValues: myInitialValues,
         onSubmit: values => {
@@ -40,7 +41,7 @@ export const LogInForm = () => {
         validationSchema: loginFormat,
     });
 
-    const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
+    const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
     });
     const [open, setOpen] = useState(false);
