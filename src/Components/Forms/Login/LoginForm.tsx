@@ -33,9 +33,8 @@ export const LogInForm = () => {
                     }
                 })
                 .catch(error => {
-                    if ((error.message = "Request failed with status code 401")) {
-                        setIsRightCredentials(false);
-                    }
+                    console.log(error);
+                    setIsRightCredentials(false);
                 });
         },
         validationSchema: loginFormat,
@@ -45,6 +44,7 @@ export const LogInForm = () => {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
     });
     const [open, setOpen] = useState(false);
+
     const handleClick = () => {
         setOpen(true);
     };
@@ -60,13 +60,22 @@ export const LogInForm = () => {
         <>
             {!isRightCredentials && (
                 <Stack spacing={4} sx={{ width: "100%" }}>
-                    <Snackbar open={open} onClose={handleClose}>
-                        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+                    <Snackbar
+                        open={open}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                            vertical: "top",
+                            horizontal: "center",
+                        }}
+                        autoHideDuration={6000}
+                    >
+                        <Alert onClose={handleClose} severity="error" sx={{ width: "500px" }}>
                             Wrong credentials
                         </Alert>
                     </Snackbar>
                 </Stack>
             )}
+
             <form className={styles.myLogInForm} onSubmit={handleSubmit}>
                 <h2 className={styles.myHeader}>Log in</h2>
                 <EmailInput
