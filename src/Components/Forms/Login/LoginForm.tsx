@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import styles from "./LoginForm.module.css";
 import { useFormik } from "formik";
@@ -18,6 +18,16 @@ interface LogInFields {
 let myInitialValues: LogInFields = { email: "", password: "" };
 export const LogInForm = () => {
     const [isRightCredentials, setIsRightCredentials] = useState(true);
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setIsRightCredentials(true);
+        }, 2000);
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [isRightCredentials]);
 
     const { values, errors, handleChange, handleSubmit, touched } = useFormik({
         initialValues: myInitialValues,
@@ -42,19 +52,14 @@ export const LogInForm = () => {
     });
 
     const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
-        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+        return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />; // Alert function for SnackBar
     });
-    const [open, setOpen] = useState(false);
 
     const handleClick = () => {
         setOpen(true);
     };
 
-    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-        if (reason === "clickaway") {
-            return;
-        }
-
+    const handleClose = () => {
         setOpen(false);
     };
     return (
