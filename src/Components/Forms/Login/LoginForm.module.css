@@ -6,11 +6,11 @@
     background-color: white;
     width: 50%;
     margin-left: 25%;
+    padding: 10px;
 }
 .myHeader {
     display: flex;
     align-self: center;
-    color: var(--color-red-dark);
 }
 .myErrorMessages {
     color: var(--color-red-dark);
@@ -20,8 +20,6 @@
 #my__button {
     background-color: #736bc4;
     color: white;
-    width: 95%;
-    margin-left: 2%;
     margin-bottom: 30px;
     margin-top: 10px;
 }
