@@ -23,7 +23,7 @@ export const LogInForm = () => {
     useEffect(() => {
         const handler = setTimeout(() => {
             setIsRightCredentials(true);
-        }, 2000);
+        }, 6000);
         return () => {
             clearTimeout(handler);
         };
